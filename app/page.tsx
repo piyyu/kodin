@@ -1,40 +1,55 @@
-"use client";
-
-import { useState } from "react";
+import Navbar from "./components/navbar/Navbar";
+import Link from "next/link";
 
 export default function Home() {
-  const [repo, setRepo] = useState("");
-  const [data, setData] = useState(null);
-
-  async function fetchGithub() {
-    const res = await fetch("/api/github", {
-      method: "POST",
-      body: JSON.stringify({ repoUrl: repo })
-    });
-
-    const json = await res.json();
-    setData(json);
-  }
-
   return (
-    <div className="w-screen p-6 space-y-4 flex flex-col items-center bg-gray-800 min-h-screen">
-      <input
-        value={repo}
-        onChange={(e) => setRepo(e.target.value)}
-        placeholder="Paste GitHub repo URL"
-        className="border p-2 w-full"
-      />
+    <main className="min-h-screen bg-[url('/bg.webp')] bg-cover bg-center overflow-hidden relative">
+      <Navbar />
 
-      <button 
-        onClick={fetchGithub} 
-        className="px-4 py-2 bg-blue-600 text-white rounded"
-      >
-        Fetch GitHub Data
-      </button>
+      <section className="relative pt-32 pb-20 px-4 flex flex-col items-center justify-center text-center max-w-5xl mx-auto z-10 min-h-[90vh]">
 
-      {data && <pre className="bg-gray-900 text-white p-4 rounded w-full overflow-x-auto">
-        {JSON.stringify(data, null, 2)}
-      </pre>}
-    </div>
+        <div
+          className="
+            mb-8 inline-flex items-center gap-2 px-4 py-2
+            rounded-2xl
+            bg-white/20 backdrop-blur-md
+            border border-white/30
+            shadow-[0_4px_12px_rgba(0,0,0,0.05)]
+          "
+        >
+          <span className="text-sm font-medium text-[#1f566d]/80">
+            Now supporting all public & private repos
+          </span>
+        </div>
+
+        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-[#0f2d3a] mb-6 drop-shadow-sm">
+          AI that explains any <br className="hidden md:block" />
+          GitHub repo in minutes.
+        </h1>
+
+        <p className="text-xl md:text-2xl text-[#335c6e] max-w-4xl mb-10 leading-relaxed">
+          Kodin uses AI to analyze GitHub repositories and <span className="font-semibold text-[#71b4d7]">generate clear, step-by-step tutorials so you can understand, contribute, and ship faster.</span>
+        </p>
+
+        <Link
+          href="/home"
+          className="
+            group relative
+            inline-flex items-center justify-center
+            px-8 py-4
+            text-lg font-semibold text-white
+            rounded-2xl
+            bg-gradient-to-b from-[#8bbad8] to-[#7aa9c6]
+            shadow-[0_10px_20px_-5px_rgba(139,186,216,0.5),inset_0_1px_0_rgba(255,255,255,0.4)]
+            border-t border-white/20
+            hover:shadow-[0_15px_30px_-5px_rgba(139,186,216,0.6),inset_0_1px_0_rgba(255,255,255,0.6)]
+            transition-all duration-300
+          "
+        >
+          Getting Started
+        </Link>
+
+      </section>
+    </main>
   );
 }
