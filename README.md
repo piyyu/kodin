@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kodin 🚀
 
-## Getting Started
+**Kodin** is an advanced AI-powered tutoring assistant designed to help developers understand any GitHub repository. By analyzing the codebase, Kodin generates a structured, step-by-step tutorial plan and provides detailed, deep-dive chapters on-demand, explaining the architecture, key concepts, and implementation details.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **🔍 Repository Analysis**: Fetches and analyzes file structures and code from any public GitHub repository.
+- **📚 AI Chapter Planning**: Generates a comprehensive 10-12 chapter learning path tailored to the specific project.
+- **🤖 On-Demand Tutorials**: Uses Groq (Llama 3) to generate detailed markdown tutorials for each chapter, complete with code examples and architectural insights.
+- **💎 Glassmorphism UI**: A stunning, modern interface featuring glassmorphism effects, smooth animations, and a premium developer experience.
+- **📝 Rich Content Display**: Tutorials are rendered with syntax highlighting, copy-to-clipboard functionality, and clear typographic hierarchy.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **AI Integration**: Groq SDK
+- **Icons**: Lucide React
+- **Markdown**: React Markdown & React Syntax Highlighter
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18+
+- A Groq API Key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/piyyu/kodin.git
+    cd kodin
+    ```
 
-## Deploy on Vercel
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3.  **Set up environment variables:**
+    Create a `.env` file in the root directory and add your Groq API key:
+    ```env
+    GROQ_API_KEY=your_groq_api_key_here
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Open the app:**
+    Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📦 Dependencies
+
+- `groq-sdk`: For interacting with Groq's fast AI inference.
+- `next`: The React framework for the web.
+- `react` / `react-dom`: UI library.
+- `react-markdown`: For rendering the generated tutorial content.
+- `react-syntax-highlighter`: For beautiful code blocks.
+- `lucide-react`: For modern, clean icons.
+- `tailwindcss`: For utility-first styling.
