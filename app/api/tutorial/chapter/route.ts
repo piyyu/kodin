@@ -38,13 +38,13 @@ export async function POST(req: Request) {
       ...(repoData.files.code || []).map((f: any) => f.path),
     ];
 
-    // We limit to top 50 files and truncate content to avoid token limits
+    // We limit context significantly to avoid hitting the 6k TPM limit on the free/instant tier
     const repoContext = {
       projectType: repoData.projectType,
-      fileTree: allPaths.slice(0, 500), // Provide a broad view of the file structure
-      files: repoData.files.code.slice(0, 50).map((f: any) => ({
+      fileTree: allPaths.slice(0, 200), // Reduced from 300 to 200
+      files: repoData.files.code.slice(0, 10).map((f: any) => ({ // Reduced from 15 to 10 files
         path: f.path,
-        content: f.content ? f.content.slice(0, 8000) : "// No content"
+        content: f.content ? f.content.slice(0, 1000) : "// No content" // Reduced from 1500 to 1000 chars
       })),
     };
 
@@ -62,6 +62,14 @@ STRICT RULES:
 6. If the chapter is "Project Structure" or an overview, use the 'fileTree' to describe the architecture.
 7. Use Markdown. Use code blocks with the language specified (e.g. \`\`\`tsx).
 
+STRUCTURE REQUIREMENT:
+You MUST follow this exact structure for the chapter:
+1. **Introduction**: Briefly explain what this chapter covers and why it matters.
+2. **Key Concepts**: A bulleted list of the core concepts or technologies involved.
+3. **Implementation**: The main content. Walk through the code, explaining specific functions and lines from the context. Use code blocks with file paths as comments or descriptions.
+4. **Deep Dive**: Explain *why* certain design choices were made (e.g., "Why use this hook?", "Why this folder structure?").
+5. **Summary**: A short wrap-up.
+
 Project Context (FILES FROM REPO):
 ${JSON.stringify(repoContext, null, 2)}
 
@@ -70,9 +78,13 @@ ID: ${chapter.id}
 Title: ${chapter.title}
 Summary: ${chapter.summary}
 
+
 Task:
-Write the detailed tutorial content for this SINGLE chapter.
-Start immediately with a level 1 heading (# ${chapter.title}).
+Write the detailed tutorial content for this SINGLE chapter following the structure above.
+IMPORTANT Rules for Output:
+1. DO NOT output the Chapter Title as a heading. It is already shown in the UI. Start directly with the "**Introduction**" section (use ## Introduction).
+2. DO NOT use decorative separator lines (like "======" or "------").
+3. Use at most ## (H2) for top-level sections since the page title is H1.
 `;
 
     const completion = await groq.chat.completions.create({

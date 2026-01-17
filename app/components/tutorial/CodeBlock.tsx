@@ -18,7 +18,7 @@ export default function CodeBlock({ language, value }: CodeBlockProps) {
   };
 
   return (
-    <div className="relative group rounded-xl overflow-hidden my-6 border border-white/10 shadow-2xl bg-[#1e1e1e]">
+    <div className="relative group rounded-xl overflow-hidden my-6 border border-white/10 shadow-2xl bg-[#0d1117]/90 backdrop-blur-xl">
       <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/5">
         <span className="text-xs font-mono text-blue-200/60 uppercase tracking-wider">
           {language || "text"}

@@ -44,7 +44,7 @@ Rules:
 - Ignore configuration files and UI primitives
 - Do NOT explain anything
 - Do NOT include code
-- 4–8 chapters maximum
+- 10–12 chapters maximum
 - Use kebab-case for ids
 
 Return ONLY valid JSON in this exact format:
@@ -65,7 +65,7 @@ ${JSON.stringify(repoMap, null, 2)}
     const completion = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
       temperature: 0.2,
-      max_tokens: 300,
+      max_tokens: 1000,
       messages: [
         { role: "system", content: "Output JSON only." },
         {

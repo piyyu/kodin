@@ -9,7 +9,8 @@ export default function TutorialDetails({ chapter, isLoading }: { chapter: any, 
       <div
         className="
           w-full h-full
-          max-w-4xl
+          w-full h-full
+          w-full
           p-8 md:p-12
           rounded-3xl
           bg-[#1f566d]/80
@@ -21,16 +22,16 @@ export default function TutorialDetails({ chapter, isLoading }: { chapter: any, 
           overflow-hidden
         "
       >
-        <div className="border-b border-white/10 pb-6 mb-6">
-          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-blue-100 text-xs font-medium mb-3">
-            Chapter {chapter.id}
-          </span>
-          <h1 className="text-3xl md:text-4xl font-semibold text-white">
-            {chapter.title}
-          </h1>
-        </div>
+        <div className="flex-1 overflow-y-auto pr-4 text-blue-50/90 leading-relaxed space-y-4 dark-scroll no-scrollbar">
+          <div className="border-b border-white/10 pb-6 mb-6">
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-blue-100 text-xs font-medium mb-3">
+              Chapter {chapter.id}
+            </span>
+            <h1 className="text-3xl md:text-4xl font-semibold text-white">
+              {chapter.title}
+            </h1>
+          </div>
 
-        <div className="flex-1 overflow-y-auto pr-4 text-blue-50/90 leading-relaxed space-y-4 dark-scroll">
           <div className="max-w-none prose prose-invert prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0">
             {isLoading ? (
               <div className="space-y-4 animate-pulse">
