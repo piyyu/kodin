@@ -28,5 +28,8 @@
     "eslint-config-next": "16.0.5",
     "tailwindcss": "^4.1.17",
     "typescript": "^5"
+  },
+  "overrides": {
+    "formdata-node": "^6.0.3"
   }
 }
